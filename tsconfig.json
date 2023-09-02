@@ -1,0 +1,10 @@
+{
+  "extends": "@yafh/tsconfig/tsconfig.lib.json",
+  "include": ["src/**/*", "tsup.config.ts", "scripts/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

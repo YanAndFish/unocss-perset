@@ -1,0 +1,54 @@
+{
+  "name": "@yafh/unocss-perset",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "description": "YanAndFish preset for UnoCSS.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "bumpp": "bumpp",
+    "dev": "tsx scripts/dev.ts"
+  },
+  "keywords": [
+    "unocss",
+    "preset"
+  ],
+  "author": "YanAndFish <383904425@qq.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/yafh.d.ts",
+      "default": "./dist/yafh.cjs",
+      "import": "./dist/yafh.js"
+    },
+    "./yafh": {
+      "types": "./dist/yafh.d.ts",
+      "default": "./dist/yafh.cjs",
+      "import": "./dist/yafh.js"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "@yafh/eslint-config": "^0.4.1",
+    "@yafh/tsconfig": "^0.2.0",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.48.0",
+    "tsup": "^7.2.0",
+    "tsx": "^3.12.8",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@unocss/core": "^0.55.4",
+    "@unocss/preset-mini": "^0.55.4"
+  },
+  "peerDependencies": {
+    "unocss": "^0.55.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
