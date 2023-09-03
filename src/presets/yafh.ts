@@ -1,4 +1,5 @@
-import { type Preset } from '@unocss/core'
+import type { Preset } from '@unocss/core'
+import { type Theme } from '@unocss/preset-mini'
 
 function createShadow(level: number) {
   const prefix = 'var(--un-shadow-inset)'
@@ -11,9 +12,10 @@ function createShadow(level: number) {
   ].join(', ')
 }
 
-export function yafh(): Preset<object> {
+export function yafh(): Preset<Theme> {
   return {
-    name: 'yafh',
+    name: '@yafh/yafh',
+    enforce: 'post',
     rules: [
       [/^shadow(?:-([\d\.]+))$/, (match) => {
         const [, d] = match
@@ -40,7 +42,14 @@ export function yafh(): Preset<object> {
       [/^f-(.*)$/, ([, c]) => `text-${c}`],
       [/^r-(.*)$/, ([, c]) => `rounded-${c}`],
     ],
-
+    autocomplete: {
+      templates: [
+        'f-<num>',
+        'r-<num>',
+        'shadow-<num>',
+        'f-$colors',
+      ],
+    },
   }
 }
 

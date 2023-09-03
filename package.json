@@ -37,6 +37,11 @@
       "types": "./dist/presets/yafh.d.ts",
       "require": "./dist/presets/yafh.cjs",
       "import": "./dist/presets/yafh.js"
+    },
+    "./viewport": {
+      "types": "./dist/presets/viewport.d.ts",
+      "require": "./dist/presets/viewport.cjs",
+      "import": "./dist/presets/viewport.js"
     }
   },
   "devDependencies": {

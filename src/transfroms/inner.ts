@@ -1,6 +1,6 @@
 import { type SourceCodeTransformer, expandVariantGroup } from '@unocss/core'
 
-const innerRE = /(["'`]):inner(?:-)?(?<name>[^\s\1]+)?:\s([^\1]*?)\1/g
+const innerRE = /(["'`]):inner:\s([^\1]*?)\1/g
 
 export function transformerInner(): SourceCodeTransformer {
   return {
@@ -15,7 +15,7 @@ export function transformerInner(): SourceCodeTransformer {
       for (const match of matchs) {
         const start = match.index!
         const input = match[0]
-        const content = expandVariantGroup(match[3].trim())
+        const content = expandVariantGroup(match[2].trim())
 
         const tokens = (await Promise.all(content.split(/\s+/).filter(Boolean).map(e => uno.parseToken(e))))
         const styleContent = tokens.flat().map(e => e?.[2]).filter(Boolean).join('')
