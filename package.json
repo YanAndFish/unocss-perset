@@ -4,7 +4,6 @@
   "private": false,
   "type": "module",
   "description": "YanAndFish preset for UnoCSS.",
-  "main": "index.js",
   "scripts": {
     "build": "tsup",
     "bumpp": "bumpp",
@@ -25,18 +24,19 @@
   },
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ],
   "exports": {
     ".": {
-      "types": "./dist/yafh.d.ts",
-      "default": "./dist/yafh.cjs",
-      "import": "./dist/yafh.js"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     },
     "./yafh": {
-      "types": "./dist/yafh.d.ts",
-      "default": "./dist/yafh.cjs",
-      "import": "./dist/yafh.js"
+      "types": "./dist/presets/yafh.d.ts",
+      "require": "./dist/presets/yafh.cjs",
+      "import": "./dist/presets/yafh.js"
     }
   },
   "devDependencies": {
@@ -45,6 +45,7 @@
     "@yafh/tsconfig": "^0.2.0",
     "bumpp": "^9.2.0",
     "eslint": "^8.48.0",
+    "fast-glob": "^3.3.1",
     "tsup": "^7.2.0",
     "tsx": "^3.12.8",
     "typescript": "^5.2.2"
