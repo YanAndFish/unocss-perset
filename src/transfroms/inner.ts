@@ -4,7 +4,7 @@ const innerRE = /(["'`]):inner:\s([^\1]*?)\1/g
 
 export function transformerInner(): SourceCodeTransformer {
   return {
-    name: '@yafh/transformer-cinner',
+    name: '@yafh/transformer-inner',
     enforce: 'pre',
     async transform(s, _, { uno }) {
       const matchs = [...s.original.matchAll(innerRE)]
