@@ -1,7 +1,7 @@
 const numberWithUnitRE = /^(-?\d*(?:\.\d+)?)(px|pt|pc|%|r?(?:em|ex|lh|cap|ch|ic)|(?:[sld]?v|cq)(?:[whib]|min|max)|in|cm|mm|rpx)?$/i
 const unitOnlyRE = /^(px)$/i
 
-function round(n: number) {
+export function round(n: number) {
   return n.toFixed(10).replace(/\.0+$/, '').replace(/(\.\d+?)0+$/, '$1')
 }
 

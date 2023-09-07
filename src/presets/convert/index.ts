@@ -1,5 +1,5 @@
 import type { Preset } from '@unocss/core'
-import { type ViewPortOption, convertOptionSymbol } from '@/utils/convert'
+import { type ViewPortOption, convert as _convert, convertOptionSymbol } from '@/utils/convert'
 
 export function convert(option: ViewPortOption): Preset<object> {
   return {
@@ -9,11 +9,10 @@ export function convert(option: ViewPortOption): Preset<object> {
       return theme
     },
     postprocess: (util) => {
-      console.log(util.selector)
-
       util.entries.forEach((e) => {
         const value = e[1]
-        console.log('value', e)
+        if (typeof value === 'string')
+          e[1] = _convert(value, option)
       })
     },
   }

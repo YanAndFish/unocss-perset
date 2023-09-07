@@ -1,9 +1,9 @@
 import { type HighlightAnnotation, type Preset, type SourceCodeTransformer } from '@unocss/core'
 import { type Theme } from '@unocss/preset-mini'
 import { hasParseableColor } from '@unocss/preset-mini/utils'
+import { convert, resolveConvertOption } from '@/utils/convert'
 import { parseColorValue } from '@/utils/color'
 import { rem } from '@/utils/unit'
-import { resolveConvertOption } from '@/utils/convert'
 
 const dollarValueRE = /(["'`])\$#?:([-\d\w\.\/%]*)/g
 
@@ -14,9 +14,12 @@ function parseValue(original: string, theme: Theme, meta: boolean): string | und
   if (hasParseableColor(original, theme))
     return parseColorValue(original, theme, meta)
 
-  console.log(resolveConvertOption(theme))
-
-  return rem(original)
+  // try get convert option from theme
+  const convertOption = resolveConvertOption(theme)
+  if (convertOption)
+    return convert(rem(original) || original, convertOption)
+  else
+    return rem(original)
 }
 
 export function transformerDollarValue(): SourceCodeTransformer {

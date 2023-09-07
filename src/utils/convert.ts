@@ -1,3 +1,5 @@
+import { round } from './unit'
+
 export const convertOptionSymbol = Symbol.for('yafh:convertOption')
 
 type Unit = 'px' | 'rem' | 'pt' | 'viewport'
@@ -62,12 +64,46 @@ function resolveUnitRE(unit: Exclude<Unit, 'viewport'>[]): RegExp {
   return RegExp(`(-?[\\.\\d]+)(${unit.join('|')})`, 'g')
 }
 
-export function convert(source: string, option: ViewPortOption) {
+export function convert(value: string, option: ViewPortOption) {
   if (isCorventPx(option)) {
-    //
+    const { source = 'rem', baseFontSize = 16 } = option
+    const unitRE = resolveUnitRE(Array.isArray(source) ? source : [source])
+
+    return value.replace(unitRE, (_, val, unit) => {
+      if (unit === 'rem')
+        return `${round(val * baseFontSize)}px`
+      else if (unit === 'pt')
+        return `${round(val * 4 / 3)}px`
+      else
+        return val + unit // keep original
+    })
   } else if (isConvertRem(option)) {
-    //
+    const { source = 'px', baseFontSize = 16 } = option
+    const unitRE = resolveUnitRE(Array.isArray(source) ? source : [source])
+
+    return value.replace(unitRE, (_, val, unit) => {
+      if (unit === 'px')
+        return `${round(val / baseFontSize)}rem`
+      else if (unit === 'pt')
+        return `${round(val * 4 / 3 / baseFontSize)}rem`
+      else
+        return val + unit // keep original
+    })
   } else if (isConvertViewport(option)) {
-    //
+    const { source = 'px', baseFontSize = 16, viewportWidth = 390 } = option
+    const unitRE = resolveUnitRE(Array.isArray(source) ? source : [source])
+
+    return value.replace(unitRE, (_, val, unit) => {
+      if (unit === 'px')
+        return `${round(val / viewportWidth * 100)}vw`
+      else if (unit === 'pt')
+        return `${round(val * 4 / 3 / viewportWidth * 100)}vw`
+      else if (unit === 'rem')
+        return `${round(val * baseFontSize / viewportWidth * 100)}vw`
+      else
+        return val + unit // keep original
+    })
+  } else {
+    return value // keep original
   }
 }
