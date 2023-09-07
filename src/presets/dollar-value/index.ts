@@ -2,16 +2,21 @@ import { type HighlightAnnotation, type Preset, type SourceCodeTransformer } fro
 import { type Theme } from '@unocss/preset-mini'
 import { hasParseableColor } from '@unocss/preset-mini/utils'
 import { parseColorValue } from '@/utils/color'
+import { rem } from '@/utils/unit'
+import { resolveConvertOption } from '@/utils/convert'
 
-const dollarValueRE = /(["'`])\$#?:([-\d\w\.\/]*)/g
+const dollarValueRE = /(["'`])\$#?:([-\d\w\.\/%]*)/g
 
 function parseValue(original: string, theme: Theme, meta: boolean): string | undefined {
   if (!original?.trim())
     return undefined
-  else if (!Number.isNaN(+original))
-    return `${+original * 0.25}rem`
-  else if (hasParseableColor(original, theme))
+
+  if (hasParseableColor(original, theme))
     return parseColorValue(original, theme, meta)
+
+  console.log(resolveConvertOption(theme))
+
+  return rem(original)
 }
 
 export function transformerDollarValue(): SourceCodeTransformer {
@@ -52,7 +57,7 @@ export function dollarValue(): Preset<Theme> {
     name: '@yafh/dollar-value',
     rules: [
       [
-        /^\$#?:([-\d\w\.\/]*)$/,
+        /^\$#?:([-\d\w\.\/%]*)$/,
         (match, context) => {
           return {
             '--dollar-value': parseValue(match[1], context.theme, match[0].includes('$#')) || 'none',

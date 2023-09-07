@@ -20,7 +20,6 @@ export interface DynamicRuleOption<T extends object = Theme> {
 export function defineRule<T extends object = Theme>(option: StaticRuleOption): Rule<T>
 export function defineRule<T extends object = Theme>(option: DynamicRuleOption<T>): Rule<T>
 export function defineRule<T extends object = Theme>(option: StaticRuleOption | DynamicRuleOption<T>): Rule<T> {
-  const rule: any = [option.rule, option.metcher]
-  option.meta && rule.push(option.meta)
-  return rule
+  const { rule, metcher, meta } = option
+  return (meta ? [rule, metcher, meta] : [rule, metcher]) as Rule<T>
 }

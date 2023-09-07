@@ -42,6 +42,11 @@
       "types": "./dist/presets/dollar-value/index.d.ts",
       "require": "./dist/presets/dollar-value/index.cjs",
       "import": "./dist/presets/dollar-value/index.js"
+    },
+    "./convert": {
+      "types": "./dist/presets/convert/index.d.ts",
+      "require": "./dist/presets/convert/index.cjs",
+      "import": "./dist/presets/convert/index.js"
     }
   },
   "devDependencies": {
