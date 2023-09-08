@@ -1,5 +1,5 @@
 import type { Preset } from '@unocss/core'
-import type { Theme } from 'unocss/preset-mini'
+import type { Theme } from '@unocss/preset-mini'
 
 // rules
 import shadow from './rules/shadow'

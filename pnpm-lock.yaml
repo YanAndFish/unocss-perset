@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@unocss/core':
-    specifier: '>=0.55.0'
-    version: 0.55.0
+    specifier: ^0.55.4
+    version: 0.55.4
   '@unocss/preset-mini':
     specifier: ^0.55.4
     version: 0.55.4

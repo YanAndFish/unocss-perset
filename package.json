@@ -1,53 +1,64 @@
 {
   "name": "@yafh/unocss-preset",
+  "type": "module",
   "version": "0.0.1",
   "private": false,
-  "type": "module",
   "description": "YanAndFish preset for UnoCSS.",
-  "scripts": {
-    "build": "tsup",
-    "bumpp": "bumpp",
-    "dev": "tsx scripts/dev.ts"
-  },
-  "keywords": [
-    "unocss",
-    "preset"
-  ],
   "author": "YanAndFish <383904425@qq.com>",
+  "license": "MIT",
   "homepage": "https://github.com/YanAndFish/unocss-preset",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YanAndFish/unocss-preset.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "license": "MIT",
-  "files": [
-    "dist",
-    "*.d.ts"
+  "keywords": [
+    "unocss",
+    "preset"
   ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./yafh": {
       "types": "./dist/presets/yafh/index.d.ts",
-      "require": "./dist/presets/yafh/index.cjs",
-      "import": "./dist/presets/yafh/index.js"
+      "import": "./dist/presets/yafh/index.js",
+      "require": "./dist/presets/yafh/index.cjs"
     },
     "./dollar-value": {
       "types": "./dist/presets/dollar-value/index.d.ts",
-      "require": "./dist/presets/dollar-value/index.cjs",
-      "import": "./dist/presets/dollar-value/index.js"
+      "import": "./dist/presets/dollar-value/index.js",
+      "require": "./dist/presets/dollar-value/index.cjs"
     },
     "./convert": {
       "types": "./dist/presets/convert/index.d.ts",
-      "require": "./dist/presets/convert/index.cjs",
-      "import": "./dist/presets/convert/index.js"
+      "import": "./dist/presets/convert/index.js",
+      "require": "./dist/presets/convert/index.cjs"
     }
+  },
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "build": "tsup",
+    "bumpp": "bumpp",
+    "lint": "eslint .",
+    "lint:fix": "pnpm run lint --fix"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "unocss": ">=0.55.0"
+  },
+  "dependencies": {
+    "@unocss/core": "^0.55.4",
+    "@unocss/preset-mini": "^0.55.4"
   },
   "devDependencies": {
     "@types/node": "^20.5.7",
@@ -61,15 +72,5 @@
     "tsup": "^7.2.0",
     "tsx": "^3.12.8",
     "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "@unocss/core": "^0.55.4",
-    "@unocss/preset-mini": "^0.55.4"
-  },
-  "peerDependencies": {
-    "unocss": ">=0.55.0"
-  },
-  "engines": {
-    "node": ">=16"
   }
 }
