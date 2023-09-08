@@ -1,5 +1,5 @@
-import { type HighlightAnnotation, type Preset, type SourceCodeTransformer } from '@unocss/core'
-import { type Theme } from '@unocss/preset-mini'
+import type { HighlightAnnotation, Preset, SourceCodeTransformer } from '@unocss/core'
+import type { Theme } from '@unocss/preset-mini'
 import { hasParseableColor } from '@unocss/preset-mini/utils'
 import { convert, resolveConvertOption } from '@/utils/convert'
 import { parseColorValue } from '@/utils/color'
@@ -55,7 +55,7 @@ export function transformerDollarValue(): SourceCodeTransformer {
   }
 }
 
-export function dollarValue(): Preset<Theme> {
+export function presetDollarValue(): Preset<Theme> {
   return {
     name: '@yafh/dollar-value',
     rules: [
@@ -72,4 +72,4 @@ export function dollarValue(): Preset<Theme> {
   }
 }
 
-export default dollarValue
+export default presetDollarValue

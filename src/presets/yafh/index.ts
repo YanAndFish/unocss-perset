@@ -1,10 +1,10 @@
 import type { Preset } from '@unocss/core'
-import { type Theme } from '@unocss/preset-mini'
+import type { Theme } from 'unocss/preset-mini'
 
 // rules
 import shadow from './rules/shadow'
 
-export function yafh(): Preset<Theme> {
+export function presetYafh(): Preset<Theme> {
   return {
     name: '@yafh/yafh',
     rules: [
@@ -17,4 +17,4 @@ export function yafh(): Preset<Theme> {
   }
 }
 
-export default yafh
+export default presetYafh

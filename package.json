@@ -67,7 +67,7 @@
     "@unocss/preset-mini": "^0.55.4"
   },
   "peerDependencies": {
-    "unocss": "^0.55.0"
+    "unocss": ">=0.55.0"
   },
   "engines": {
     "node": ">=16"

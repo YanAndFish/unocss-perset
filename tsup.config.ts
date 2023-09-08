@@ -23,6 +23,7 @@ export default defineConfig({
   dts: true,
   clean: true,
   cjsInterop: true,
+  sourcemap: 'inline',
   entryPoints: ['src/index.ts', ...entrys],
   format: ['cjs', 'esm'],
   onSuccess: async () => {
