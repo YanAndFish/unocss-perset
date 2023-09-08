@@ -34,9 +34,19 @@
       "import": "./dist/index.js"
     },
     "./yafh": {
-      "types": "./dist/presets/yafh.d.ts",
-      "require": "./dist/presets/yafh.cjs",
-      "import": "./dist/presets/yafh.js"
+      "types": "./dist/presets/yafh/index.d.ts",
+      "require": "./dist/presets/yafh/index.cjs",
+      "import": "./dist/presets/yafh/index.js"
+    },
+    "./dollar-value": {
+      "types": "./dist/presets/dollar-value/index.d.ts",
+      "require": "./dist/presets/dollar-value/index.cjs",
+      "import": "./dist/presets/dollar-value/index.js"
+    },
+    "./convert": {
+      "types": "./dist/presets/convert/index.d.ts",
+      "require": "./dist/presets/convert/index.cjs",
+      "import": "./dist/presets/convert/index.js"
     }
   },
   "devDependencies": {
@@ -46,6 +56,8 @@
     "bumpp": "^9.2.0",
     "eslint": "^8.48.0",
     "fast-glob": "^3.3.1",
+    "pathe": "^1.1.1",
+    "rimraf": "^5.0.1",
     "tsup": "^7.2.0",
     "tsx": "^3.12.8",
     "typescript": "^5.2.2"
@@ -55,7 +67,7 @@
     "@unocss/preset-mini": "^0.55.4"
   },
   "peerDependencies": {
-    "unocss": "^0.55.0"
+    "unocss": ">=0.55.0"
   },
   "engines": {
     "node": ">=16"
